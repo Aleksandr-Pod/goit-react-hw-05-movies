@@ -1,11 +1,12 @@
 import Menu from "./Menu/menu";
 import { Outlet } from "react-router-dom";
 
-export default function MainPage() {
+export default function HomePage() {
     return (
         <>
             <Menu />
-            <hr/>
+            <hr />
+
             <Outlet/>
         </>
     )
