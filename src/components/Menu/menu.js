@@ -1,5 +1,5 @@
 import { NavMenu } from "./menu-styled";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Menu() {
     return (
@@ -7,7 +7,7 @@ export default function Menu() {
             <Link to="One">One</Link>
             <Link to="Two">Two</Link>
             <Link to="Three">Three</Link>
-            <Outlet/>
+
         </NavMenu>
     )
 } 
