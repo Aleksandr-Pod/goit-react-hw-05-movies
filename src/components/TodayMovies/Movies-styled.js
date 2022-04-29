@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 
-export const TodayMoviesList = styled.ul`
+export const MoviesList = styled.ul`
 margin: 0 auto;
 padding: 10px;
 max-width: 800px;
 background-color: lightgreen;
 ` 
-export const TodayMoviesTitle = styled.h3`
+export const MoviesTitle = styled.h3`
 margin-left: 30px;
 `
 export const MoviesItem = styled.li`

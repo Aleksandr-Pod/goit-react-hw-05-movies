@@ -1,22 +1,60 @@
 import { useState, useEffect } from "react";
 import * as movieApi from './APIfetch/APIfetch';
-import { TodayMoviesList, TodayMoviesTitle, MoviesItem } from '../components/TodayMovies/todayMovies-styled';
+import { MoviesList, MoviesTitle, MoviesItem } from './TodayMovies/Movies-styled';
 import { NavLink } from 'react-router-dom';
+import toastr from "toastr";
+
+toastr.options = {
+    "progressBar": true,
+    "positionClass": "toast-top-left",
+    "timeOut": "3000",
+    "extendedTimeOut": "1000",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+  }
 
 export default function MoviesPage() {
-    const [movies, setMovies] = useState([]);
-    useEffect(() => {
-        movieApi.fetchSearch('batman').then(data => setMovies(data.results));
-    })
+  const [movies, setMovies] = useState();
+  const [value, setValue] = useState("");
+  const [searchName, setSearchName] = useState("");
+  
+  useEffect(() => {
+    if (!searchName) return;
+    movieApi.fetchSearch(searchName)
+      .then(data => {
+        if (data.results.length === 0) {
+          toastr.error("No results");
+          setMovies();
+          return;
+        }
+        setMovies(data.results);
+      })
+  }, [searchName])
+  const onChange = e => setValue(e.target.value);
+  
+  const onSubmit = e => {
+    e.preventDefault();
+    setSearchName(value);
+  }
 
-    return (
-        <TodayMoviesList>
-            <TodayMoviesTitle>Список фильмов за день</TodayMoviesTitle>
-            {movies.map(el => (
-                <MoviesItem key={el.id}>
-                    <NavLink to={`movies/${el.id}`}>{el.title}</NavLink>
-                </MoviesItem>
-            ))}
-        </TodayMoviesList>
-    )
+  return (
+      <>
+          <form>
+              <label>Imput movie name 
+                  <input type="text" value={value} onChange={onChange}></input>
+              </label>
+              <button onClick={onSubmit}>Search</button>  
+          </form>
+          {movies &&
+              <MoviesList>
+                  <MoviesTitle>Список фильмов по запросу {searchName}</MoviesTitle>
+                  {movies.map(el => (
+                      <MoviesItem key={el.id}>
+                          <NavLink to={`${el.id}`}>{el.title}</NavLink>
+                      </MoviesItem>
+                  ))}
+              </MoviesList>
+          }
+      </>
+  )
 }

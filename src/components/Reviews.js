@@ -1,7 +1,28 @@
+import { useState, useEffect } from 'react';
+import * as movieApi from './APIfetch/APIfetch';
+import { useParams } from 'react-router-dom'; 
+
 export default function Reviews() {
-    return (
-        <>
-        Reviews content
-        </>
-    )
+  const { movieId } = useParams();
+  const [reviews, setReviews] = useState(null);
+
+  useEffect(() => {
+    if (reviews) return;
+    movieApi.fetchReviews(movieId).then(data => setReviews(data.results));
+  }, [movieId, reviews]);
+
+
+
+  return (
+    <>
+      {reviews && 
+        <>{reviews.map(el => (
+          <li key={el.id}>
+            <p>{el.author}</p>
+            <p>{el.content}</p>
+          </li>
+        ))}
+        </>}
+    </>
+  )
 }
