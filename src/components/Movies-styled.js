@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 
-export const MoviesList = styled.ul`
+export const MoviesBox = styled.ul`
 margin: 0 auto;
 padding: 10px;
 max-width: 800px;

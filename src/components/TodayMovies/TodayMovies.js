@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import * as movieApi from '../APIfetch/APIfetch';
-import { MoviesList, MoviesTitle, MoviesItem } from './Movies-styled';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
+import MoviesList from 'components/MoviesList';
 
 export default function TodayMovies() {
     const [movies, setMovies] = useState([]);
@@ -11,14 +11,11 @@ export default function TodayMovies() {
         movieApi.fetchForADay().then(data => setMovies(data.results));
     }, [movies]);
 
-    return (
-        <MoviesList>
-            <MoviesTitle>Список фильмов за день</MoviesTitle>
-            {movies.map(el => (
-                <MoviesItem key={el.id}>
-                    <NavLink to={`movies/${el.id}`}>{el.title}</NavLink>
-                </MoviesItem>
-            ))}
-        </MoviesList>
-    )
+  return (
+    <>
+      <MoviesList
+        title="Todays Movies"
+        movies={movies} />
+    </>
+  )
 }

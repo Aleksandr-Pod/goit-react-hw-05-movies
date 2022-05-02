@@ -11,18 +11,23 @@ export default function Reviews() {
     movieApi.fetchReviews(movieId).then(data => setReviews(data.results));
   }, [movieId, reviews]);
 
-
-
   return (
     <>
       {reviews && 
-        <>{reviews.map(el => (
-          <li key={el.id}>
-            <p>{el.author}</p>
-            <p>{el.content}</p>
-          </li>
-        ))}
-        </>}
+      <>
+        {reviews.length === 0 ? <p>No any reviews here</p> :
+        <ul>
+          {reviews.map(el => (
+              <li key={el.id}>
+                <p>{el.author}</p>
+                <p>{el.content}</p>
+              </li>
+            ))
+          }
+        </ul>
+        }
+      </>
+      }
     </>
   )
 }

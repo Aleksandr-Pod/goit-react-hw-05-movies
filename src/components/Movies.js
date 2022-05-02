@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import * as movieApi from './APIfetch/APIfetch';
-import { MoviesList, MoviesTitle, MoviesItem } from './TodayMovies/Movies-styled';
-import { NavLink } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
+import MoviesList from "./MoviesList";
 import toastr from "toastr";
 
 toastr.options = {
@@ -9,52 +9,52 @@ toastr.options = {
     "positionClass": "toast-top-left",
     "timeOut": "3000",
     "extendedTimeOut": "1000",
-    "showMethod": "fadeIn",
-    "hideMethod": "fadeOut"
-  }
+}
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState();
   const [value, setValue] = useState("");
-  const [searchName, setSearchName] = useState("");
-  
+  const [searchParams, setSearchParams] = useSearchParams({});
+  const [searchName, setSearchName] = useState(() => searchParams.get("search") ?? "" );
+
   useEffect(() => {
-    if (!searchName) return;
+    if (!searchName.trim()) return;
     movieApi.fetchSearch(searchName)
       .then(data => {
-        if (data.results.length === 0) {
-          toastr.error("No results");
+        if (!data.results) {
+          toastr.error(data); // ошибка сети
+          return;
+        }
+        if (data.total_results === 0) {
+          toastr.error("No results"); // нет результата
           setMovies();
           return;
         }
-        setMovies(data.results);
-      })
-  }, [searchName])
+      setMovies(data.results);
+      setSearchParams({ search: searchName });
+  })
+  }, [searchName, setSearchParams]);
+
   const onChange = e => setValue(e.target.value);
   
   const onSubmit = e => {
     e.preventDefault();
     setSearchName(value);
   }
-
+  
   return (
-      <>
-          <form>
-              <label>Imput movie name 
-                  <input type="text" value={value} onChange={onChange}></input>
-              </label>
-              <button onClick={onSubmit}>Search</button>  
-          </form>
-          {movies &&
-              <MoviesList>
-                  <MoviesTitle>Список фильмов по запросу {searchName}</MoviesTitle>
-                  {movies.map(el => (
-                      <MoviesItem key={el.id}>
-                          <NavLink to={`${el.id}`}>{el.title}</NavLink>
-                      </MoviesItem>
-                  ))}
-              </MoviesList>
-          }
-      </>
+    <>
+      <form>
+        <label>Imput movie name 
+          <input type="text" value={value} onChange={onChange}></input>
+        </label>
+        <button onClick={onSubmit}>Search</button>  
+      </form>
+      {movies &&
+      <MoviesList
+        title="Movies by Search"
+        movies={movies} />
+      }
+    </>
   )
 }
