@@ -6,7 +6,7 @@ export default function MoviesList({movies, title}) {
         <MoviesTitle>{title}</MoviesTitle>
         {movies.map(el => (
             <MoviesItem key={el.id}>
-                <NavLink to={`movies/${el.id}`}>{el.title}</NavLink>
+                <NavLink to={`${el.id}`}>{el.title}</NavLink>
             </MoviesItem>
         ))}
     </MoviesBox>
