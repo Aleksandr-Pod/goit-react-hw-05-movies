@@ -53,7 +53,10 @@ export default function MoviesPage() {
         <button onClick={onSubmit}>Search</button>  
       </form>
       {movies &&
-        <MoviesList title="Searched movies" movies={movies} /> 
+        <MoviesList
+        title="Searched movies"
+        movies={movies}
+        prePath={''} /> 
         // <MoviesBox>
         //   <MoviesTitle>Search Movies</MoviesTitle>
         //   {movies.map(el => (
