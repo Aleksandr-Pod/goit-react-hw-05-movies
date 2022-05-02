@@ -54,9 +54,9 @@ export default function MoviesPage() {
       </form>
       {movies &&
         <MoviesList
-        title="Searched movies"
-        movies={movies}
-        prePath={''} /> 
+          title="Searched movies"
+          movies={movies}
+          prePath={''} /> 
         // <MoviesBox>
         //   <MoviesTitle>Search Movies</MoviesTitle>
         //   {movies.map(el => (
