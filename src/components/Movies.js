@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import * as movieApi from './APIfetch/APIfetch';
 import { useSearchParams } from 'react-router-dom';
-import MoviesList from "./MoviesList";
 import toastr from "toastr";
+// import { MoviesBox, MoviesTitle, MoviesItem } from './Movies-styled';
+// import { NavLink } from 'react-router-dom';
+import MoviesList from "./MoviesList";
 
 toastr.options = {
     "progressBar": true,
@@ -51,10 +53,16 @@ export default function MoviesPage() {
         <button onClick={onSubmit}>Search</button>  
       </form>
       {movies &&
-      <MoviesList
-        title="Movies by Search"
-        movies={movies} />
+        <MoviesList title="Searched movies" movies={movies} /> 
+        // <MoviesBox>
+        //   <MoviesTitle>Search Movies</MoviesTitle>
+        //   {movies.map(el => (
+        //     <MoviesItem key={el.id}>
+        //       <NavLink to={`${el.id}`}>{el.title}</NavLink>
+        //     </MoviesItem>
+        //   ))}
+        // </MoviesBox>
       }
-    </>
+      </>
   )
 }
