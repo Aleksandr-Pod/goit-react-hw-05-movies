@@ -1,5 +1,5 @@
-import { NavMenu } from "./menu-styled";
-import { Link } from "react-router-dom";
+import { NavMenu, Link } from "./menu-styled";
+
 
 export default function Menu() {
     return (

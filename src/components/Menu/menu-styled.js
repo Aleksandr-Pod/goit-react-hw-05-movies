@@ -1,10 +1,19 @@
 import styled from 'styled-components';
+import { NavLink } from "react-router-dom";
 
 export const NavMenu = styled.div`
 display: flex;
-width: 320px;
 margin: 10px auto;
-padding: 10px 20px;
-justify-content: space-around;
+justify-content: center;
+`
+export const Link = styled(NavLink)`
+text-decoration: none;
+text-align: center;
+padding: 10px;
+width: 160px;
+height: 100%;
+font-size: 24px;
+border: 1px solid orange;
+border-radius: 50%;
 background-color: yellow;
 `

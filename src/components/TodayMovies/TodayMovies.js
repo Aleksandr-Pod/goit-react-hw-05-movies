@@ -12,8 +12,8 @@ export default function TodayMovies() {
 
     return (
         <MoviesList
-            title="Today's Movies"
+            title="Tranding movies"
             movies={movies}
-            prePath={'movies/'} />
+            path={'movies/'} />
   )
 }

@@ -54,15 +54,7 @@ export default function MoviesPage() {
         <MoviesList
           title="Searched movies"
           movies={movies}
-          prePath={''} /> 
-        // <MoviesBox>
-        //   <MoviesTitle>Search Movies</MoviesTitle>
-        //   {movies.map(el => (
-        //     <MoviesItem key={el.id}>
-        //       <NavLink to={`${el.id}`}>{el.title}</NavLink>
-        //     </MoviesItem>
-        //   ))}
-        // </MoviesBox>
+          path={''} />
       }
       </>
   )

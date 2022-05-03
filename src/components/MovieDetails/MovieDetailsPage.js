@@ -26,6 +26,7 @@ export default function MovieDetailsPage() {
                     alt={movie.title} width="240"></img>
                 <MovieDetailsInfo>
                     <h3>{movie.title} ( {movie.release_date.slice(0, 4)} )</h3>
+                    <p>User Score: {movie.vote_average}</p>
                     <h4>Overview</h4>
                     <p>{movie.overview}</p>
                     <h4>Genres</h4> 
