@@ -1,11 +1,5 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-// import HomePage from "./HomePage";
-// import MoviesPage from './Movies';
-// import MovieDetailsPage from "./MovieDetails/MovieDetailsPage";
-// import Cast from "./Cast/Cast";
-// import Reviews from "./Reviews";
-// import TodayMovies from "./TodayMovies/TodayMovies";
 
 const HomePage = lazy(() => import('./HomePage'));
 const MoviesPage = lazy(() => import('./Movies/Movies'));
@@ -13,7 +7,7 @@ const MovieDetailsPage = lazy(() => import('./MovieDetails/MovieDetailsPage'));
 const Cast = lazy(() => import('./Cast/Cast'));
 const Reviews = lazy(() => import('./Reviews/Reviews'));
 const TodayMovies = lazy(() => import('./TodayMovies/TodayMovies'));
-// const MoviesList = lazy(() => import('./MoviesList'));
+const NotFound = lazy(() => import('./NotFound/NotFound'));
 
 export const App = () => {
   return (
@@ -27,7 +21,8 @@ export const App = () => {
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews /> }/>
           </Route>  
-        </Route>          
+        </Route>
+        <Route path="*" element={<NotFound/>}></Route>  
       </Routes>
       </Suspense>
     </div>

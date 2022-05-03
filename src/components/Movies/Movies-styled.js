@@ -15,7 +15,7 @@ export const MoviesItem = styled.li`
 display: flex;
 list-style: none;
 margin: 5px 0;
-// width: 100%;
+back
 `
 export const Link = styled(NavLink)`
 text-decoration: none;

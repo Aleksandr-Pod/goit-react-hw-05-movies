@@ -40,7 +40,7 @@ export default function MoviesPage() {
   
   const onSubmit = e => {
     e.preventDefault();
-    setSearchName(value);
+    setSearchName(value.trim());
   }
   
   return (
