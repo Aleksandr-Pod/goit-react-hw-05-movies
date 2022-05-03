@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
-import * as movieApi from './APIfetch/APIfetch';
+import * as movieApi from '../APIfetch/APIfetch';
 import { useSearchParams } from 'react-router-dom';
 import toastr from "toastr";
-// import { MoviesBox, MoviesTitle, MoviesItem } from './Movies-styled';
-// import { NavLink } from 'react-router-dom';
 import MoviesList from "./MoviesList";
 
 toastr.options = {

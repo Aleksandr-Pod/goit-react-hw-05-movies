@@ -8,10 +8,10 @@ import { Routes, Route } from "react-router-dom";
 // import TodayMovies from "./TodayMovies/TodayMovies";
 
 const HomePage = lazy(() => import('./HomePage'));
-const MoviesPage = lazy(() => import('./Movies'));
+const MoviesPage = lazy(() => import('./Movies/Movies'));
 const MovieDetailsPage = lazy(() => import('./MovieDetails/MovieDetailsPage'));
 const Cast = lazy(() => import('./Cast/Cast'));
-const Reviews = lazy(() => import('./Reviews'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
 const TodayMovies = lazy(() => import('./TodayMovies/TodayMovies'));
 // const MoviesList = lazy(() => import('./MoviesList'));
 

@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react';
 import { NavLink, useParams, Outlet, useNavigate, useLocation } from "react-router-dom";
 import * as APIfetch from '../APIfetch/APIfetch';
-import { MovieDetailsBlock, MovieDetailsInfo } from './MovieDetails-styled';
+import { MovieDetailsBlock, MovieDetailsInfo, GoBackBtn } from './MovieDetails-styled';
 
 export default function MovieDetailsPage() {
     const { movieId } = useParams();
     const [movie, setMovie] = useState();
     const navigate = useNavigate();
     const location = useLocation();
-    console.log(location);
 
     useEffect(() => {
         APIfetch.fetchMovieById(movieId).then(setMovie)
@@ -21,7 +20,7 @@ export default function MovieDetailsPage() {
     return (
         <>{ movie && 
             <>
-            <button type="button" onClick={onGoBack}>Go back</button>
+            <GoBackBtn type="button" onClick={onGoBack}>Go back</GoBackBtn>
             <MovieDetailsBlock>
                 <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                     alt={movie.title} width="240"></img>
@@ -35,8 +34,8 @@ export default function MovieDetailsPage() {
             </MovieDetailsBlock>
             <hr />
                 <h3>AdditionalInfo</h3>
-                <NavLink to="cast">Cast</NavLink><br/>
-                <NavLink to="reviews">Reviews</NavLink>
+                <NavLink to="cast" state={location.state}>Cast</NavLink><br/>
+                <NavLink to="reviews" state={location.state}>Reviews</NavLink>
             <hr />
             <Outlet />
             </>

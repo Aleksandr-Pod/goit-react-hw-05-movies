@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import * as movieApi from './APIfetch/APIfetch';
-import { useParams } from 'react-router-dom'; 
+import * as movieApi from '../APIfetch/APIfetch';
+import { useParams } from 'react-router-dom';
+import { ReviewsItem, Reviewer } from './Reviews-styled';
 
 export default function Reviews() {
   const { movieId } = useParams();
@@ -18,10 +19,10 @@ export default function Reviews() {
         {reviews.length === 0 ? <p>No any reviews here</p> :
         <ul>
           {reviews.map(el => (
-              <li key={el.id}>
-                <p>{el.author}</p>
+              <ReviewsItem key={el.id}>
+                <Reviewer>{el.author}</Reviewer>
                 <p>{el.content}</p>
-              </li>
+              </ReviewsItem>
             ))
           }
         </ul>
