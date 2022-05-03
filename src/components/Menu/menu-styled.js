@@ -13,7 +13,10 @@ padding: 10px;
 width: 160px;
 height: 100%;
 font-size: 24px;
-border: 1px solid orange;
-border-radius: 50%;
-background-color: yellow;
+&:hover {
+   border: 1px solid orange;
+}
+&.active {
+    background-color: yellow;
+}
 `
