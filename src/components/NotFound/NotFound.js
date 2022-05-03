@@ -1,4 +1,10 @@
+import { Message, ToHome } from "./NotFound-styled";
+import { Link } from "react-router-dom";
+
 export default function NotFound() {
-    return (<h2 style={{ textAlign: 'center' }
-}>Page not found</h2>);
+    return (
+        <>
+            <Message>Page not found</Message>
+            <ToHome to="/">Go to HomePage</ToHome>
+        </>)
 }
