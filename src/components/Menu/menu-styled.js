@@ -14,7 +14,8 @@ width: 160px;
 height: 100%;
 font-size: 24px;
 &:hover {
-   border: 1px solid orange;
+   color: red;
+   font-weight: 700;
 }
 &.active {
     background-color: yellow;

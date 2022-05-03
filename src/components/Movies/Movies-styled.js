@@ -8,7 +8,8 @@ max-width: 800px;
 background-color: lightgreen;
 ` 
 export const MoviesTitle = styled.h3`
-text-align: center
+text-align: center;
+margin: 0;
 `
 export const MoviesItem = styled.li`
 display: flex;
@@ -24,4 +25,10 @@ height: 100%;
 border: 1px solid green;
 border-radius: 5px;
 background-color: yellow;
+`
+export const Form = styled.form`
+display: flex;
+flex-direction: raw;
+justify-content: center;
+padding: 10px;
 `

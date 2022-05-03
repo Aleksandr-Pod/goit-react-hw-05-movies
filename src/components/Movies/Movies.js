@@ -3,6 +3,7 @@ import * as movieApi from '../APIfetch/APIfetch';
 import { useSearchParams } from 'react-router-dom';
 import toastr from "toastr";
 import MoviesList from "./MoviesList";
+import { Form } from './Movies-styled'
 
 toastr.options = {
     "progressBar": true,
@@ -44,12 +45,12 @@ export default function MoviesPage() {
   
   return (
     <>
-      <form>
-        <label>Imput movie name 
+      <Form>
+        <label>Imput movie name
           <input type="text" value={value} onChange={onChange}></input>
         </label>
         <button onClick={onSubmit}>Search</button>  
-      </form>
+      </Form>
       {movies &&
         <MoviesList
           title="Searched movies"
