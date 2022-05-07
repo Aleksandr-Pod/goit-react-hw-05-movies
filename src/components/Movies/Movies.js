@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import toastr from "toastr";
 import MoviesList from "./MoviesList";
 import { Form } from './Movies-styled'
+import { useForm } from 'react-hook-form';
 
 toastr.options = {
     "progressBar": true,
@@ -14,9 +15,9 @@ toastr.options = {
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState();
-  const [value, setValue] = useState("");
   const [searchParams, setSearchParams] = useSearchParams({});
   const [searchName, setSearchName] = useState(() => searchParams.get("search") ?? "" );
+  const { register, handleSubmit } = useForm();
 
   useEffect(() => {
     if (!searchName.trim()) return;
@@ -36,20 +37,15 @@ export default function MoviesPage() {
   })
   }, [searchName, setSearchParams]);
 
-  const onChange = e => setValue(e.target.value);
-  
-  const onSubmit = e => {
-    e.preventDefault();
-    setSearchName(value.trim());
-  }
+  // const onSubmit = value => setSearchName(value.searchName);
   
   return (
     <>
-      <Form>
+      <Form onSubmit={handleSubmit(value => setSearchName(value.searchName))}>
         <label>Imput movie name
-          <input type="text" value={value} onChange={onChange}></input>
+          <input type="text" {...register("searchName")}></input>
         </label>
-        <button onClick={onSubmit}>Search</button>  
+        <button type="submit">Search</button>  
       </Form>
       {movies &&
         <MoviesList
