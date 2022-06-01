@@ -29,7 +29,7 @@ export default function MovieDetailsPage() {
                     <p>User Score: {movie.vote_average}</p>
                     <h4>Overview</h4>
                     <p>{movie.overview}</p>
-                    <h4>Genres</h4> 
+                    <h4>Genres</h4>
                     <p>{movie.genres && movie.genres.map(el => el.name).join(", ")}</p>
                 </MovieDetailsInfo>
             </MovieDetailsBlock>
