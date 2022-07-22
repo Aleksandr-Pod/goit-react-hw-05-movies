@@ -1,8 +1,13 @@
 # Homework #5 - Movies  
 React on function components with hooks & BrowserRouter.  
-{ NavLink, useParams, Outlet, useNavigate, useLocation, BrowserRouter } from "react-router-dom"  
+{ BrowserRouter, Routes, Route, NavLink, useParams, Outlet, useNavigate, useLocation } from "react-router-dom"  
+
 paths:  
 movies  
 movie/:movieId  
 movie/:movieId/cast  
-movie/:movieId/reviews
+movie/:movieId/reviews  
+
+Lazy import - { lazy, Suspense } from "react";  
+
+Libs: Formik, toastr
